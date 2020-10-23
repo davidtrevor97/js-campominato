@@ -29,16 +29,23 @@ for (var i = 0; i < 16; i++) {
 console.log(range);
 //Inserimento primo numero del utente
 var clientNumber = parseInt( prompt("Ehy, inserisci un numero da 1 a 100") );
+while ( ( clientNumber > 100 ) || ( clientNumber < 1) ) {
+  alert("Attenzione! inserire solo numeri presi tra 1 e 100")
+  var clientNumber = parseInt( prompt("Ehy, inserisci un numero da 1 a 100") );
+}
+// Somma del punteggio
+var somma = 0;
 //Verifica della disuguaglianza tra numero utente e numeri array range, se falsa = alert , se vera = prompt
 for (var i = 0; i < ( max - range.length ); i++) {
   if ( range.includes(clientNumber) == true){
-    alert("ops! Hai perso");
+    alert( "Oops! Hai perso" + " " + "\nPunteggio = " + somma);
   } else {
+    somma += 1;
+    var clientNumber = parseInt( prompt("Inseriscine un altro") );
     if ( clientArray.includes(clientNumber) == true ) {
       alert("Attenzione! Cambiare numeri");
-      var clientNumber = parseInt( prompt("Ehy, inseriscine un altro") );
+    }else {
+      clientArray.push(clientNumber);
     }
-    var clientNumber = parseInt( prompt("Ehy, inseriscine un altro") );
-    clientArray.push(clientNumber);
   }
 }
